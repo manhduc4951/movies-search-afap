@@ -1,0 +1,41 @@
+<% include layout/header %>
+
+
+<div class="container">
+      <div class="row">
+            <div class="xs-col-12">
+                  <div id="search-form">
+                        <form action='/search' method="GET">
+                              <input id="search" type="text" name="movieName" placeholder="Enter something to search">
+                              <button id="submit" type="submit" class="btn btn-default">
+                                      <i class="fa fa-search"></i> 
+                              </button>
+                        </form>
+                  </div>
+            </div>
+      </div>
+      
+      <div class="row equal">
+            <% if(typeof movies != 'undefined' && movies) { %>
+                  <% movies.forEach(function(movie){ %>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                              <div class="thumbnail">
+                                    <img src="<%= movie.Poster %>" alt="<%= movie.Title %>">
+                                    <span class="tooltip-span">
+                                          <p>Title: <%= movie.Title %></p>
+                                          <p>Year: <%= movie.Year %></p>
+                                    </span>
+                              </div>
+                        </div>
+                  <% }); %>
+            <% } %>
+            
+            
+            <% if(typeof found != 'undefined' && found == 0) { %>
+                  <div id="no-found"><h2>Found nothing</h2></div>
+            <% } %>
+            
+      </div>
+</div>
+
+<% include layout/footer %>
